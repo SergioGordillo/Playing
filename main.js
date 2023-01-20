@@ -74,16 +74,14 @@ calculatePercentageOfWomen(people);
 
 let hoursOfWork = 40;
 let ratePerHour = 10;
-let extraHours = 0;
 
 
-let calculateSalary = (hoursOfWork, ratePerHour, extraHours) => {
+let calculateSalary = (hoursOfWork, ratePerHour) => {
 
-    let normalSalary = hoursOfWork * ratePerHour;
-    let extraSalary = extraHours * (ratePerHour * 1.5);
-    let salary = normalSalary + extraSalary;
-    console.log(salary +"€");
+    let salary = hoursOfWork > 40 ? (hoursOfWork - 40)*(1.5*ratePerHour) + 40 * ratePerHour : hoursOfWork * ratePerHour;
+    console.log("salary", salary);
+    return salary;
 }
 
-calculateSalary(40, 10, 0);
-calculateSalary(40, 10, 5);
+calculateSalary(40, 1); // expectedResult: 40
+calculateSalary(45, 1); // expectedResult: 47.5
